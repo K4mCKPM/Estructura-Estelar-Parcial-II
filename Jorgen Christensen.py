@@ -1,7 +1,5 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri May  1 17:55:31 2026
-
 @author: KamCKPM
 """
 
@@ -13,7 +11,7 @@ from scipy.integrate import trapezoid, cumulative_trapezoid
 
 sns.set_theme(style="darkgrid")
 sns.set_context("poster")
-ruta = r"K:\Universidad\7mo Semestre\Stellar Structure\Jorgen Christensen.txt"
+ruta = r"./Jorgen Christensen.txt"
 
 ### Valores:
 Radio_sol = 6.96340e8   #                               (m)
@@ -58,8 +56,11 @@ Funcion_pot_grav = m_x * x * rho
 Int_Omega = trapezoid(Funcion_pot_grav, x)
 
 Omega = Int_Omega * G * 16 * np.pi**2 * (Radio_sol**5)
+Omega_q = G * M_encerrada[-1]**2 / Radio_sol
 
-print(f"\nEl valor del factor de concentración de masa es {Radio_sol * Omega / (G * M_encerrada[-1]**2):.3f}")
+print(f"""\nEl valor absoluto del potencial gravitatorio calculado es {Omega:.3E} Nm
+Comparando con su ecuación no integral, cuyo valor es {Omega_q:.3E} Nm
+obtenemos que el factor de concentración de masa (q) es {Radio_sol * Omega / (G * M_encerrada[-1]**2):.3f}""")
 
 
 ### Gráficas
